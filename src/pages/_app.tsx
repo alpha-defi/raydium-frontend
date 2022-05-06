@@ -85,9 +85,6 @@ function ClientInitialization() {
 
   useDeviceInfoSyc()
 
-  // beta welcome dialogs
-  useWelcomeDialog()
-
   return null
 }
 

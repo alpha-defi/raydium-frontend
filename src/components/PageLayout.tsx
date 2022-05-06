@@ -88,23 +88,6 @@ export default function PageLayout(props: {
       className={`w-screen mobile:w-full h-screen mobile:h-full`}
     >
       <RPCPerformanceBanner className="grid-area-d" />
-      {isMobile ? (
-        <>
-          <Navbar barTitle={props.mobileBarTitle} className="grid-area-a" onOpenMenu={() => setIsSideMenuOpen(true)} />
-          <Drawer
-            open={isSideMenuOpen}
-            onCloseTransitionEnd={() => setIsSideMenuOpen(false)}
-            onOpen={() => setIsSideMenuOpen(true)}
-          >
-            {({ close }) => <SideMenu className="flex-container h-screen" onClickCloseBtn={close} />}
-          </Drawer>
-        </>
-      ) : (
-        <>
-          <Navbar className="grid-area-a" />
-          <SideMenu className="flex-container grid-area-b" />
-        </>
-      )}
       <main
         // always occupy scrollbar space
         className={twMerge(
@@ -357,72 +340,6 @@ function SideMenu({ className, onClickCloseBtn }: { className?: string; onClickC
             />
           </Row>
         )}
-        <Col className="grid-cols-[auto,5fr,auto,1fr] justify-between flex-1 overflow-hidden">
-          <div className="shrink overflow-y-auto  py-4 space-y-1 mobile:py-0 px-2 mx-2 mb-2">
-            <LinkItem icon="/icons/entry-icon-trade.svg" href="https://dex.raydium.io/">
-              Trading
-            </LinkItem>
-            <LinkItem icon="/icons/entry-icon-swap.svg" href="/swap" isCurrentRoutePath={pathname.includes('swap')}>
-              Swap
-            </LinkItem>
-            <LinkItem
-              icon="/icons/entry-icon-liquidity.svg"
-              href="/liquidity/add"
-              isCurrentRoutePath={pathname.includes('liquidity')}
-            >
-              Liquidity
-            </LinkItem>
-            <LinkItem icon="/icons/entry-icon-pools.svg" href="/pools" isCurrentRoutePath={pathname.includes('pools')}>
-              Pools
-            </LinkItem>
-            <LinkItem icon="/icons/entry-icon-farms.svg" href="/farms" isCurrentRoutePath={pathname.includes('farms')}>
-              Farms
-            </LinkItem>
-            <LinkItem
-              icon="/icons/entry-icon-staking.svg"
-              href="/staking"
-              isCurrentRoutePath={pathname.includes('staking')}
-            >
-              Staking
-            </LinkItem>
-            <LinkItem icon="/icons/entry-icon-acceleraytor.svg" href="https://v1.raydium.io/acceleRaytor/">
-              AcceleRaytor
-            </LinkItem>
-            <LinkItem icon="/icons/entry-icon-dropzone.svg" href="https://dropzone.raydium.io/">
-              Dropzone
-            </LinkItem>
-            <LinkItem icon="/icons/entry-icon-nft.svg" href="https://nft.raydium.io/">
-              NFT
-            </LinkItem>
-          </div>
-
-          <div></div>
-
-          <div>
-            <hr className="mx-8 border-[rgba(57,208,216,0.16)] mb-3" />
-
-            <RpcConnectionPanelSidebarWidget />
-            <SettingSidebarWidget />
-            <CommunityPanelSidebarWidget />
-
-            <OptionItem noArrow href="https://raydium.gitbook.io/raydium/" iconSrc="/icons/msic-docs.svg">
-              Docs
-            </OptionItem>
-
-            <OptionItem noArrow href="https://v1.raydium.io/swap" heroIconName="desktop-computer">
-              Raydium V1
-            </OptionItem>
-
-            <OptionItem noArrow href="https://forms.gle/DvUS4YknduBgu2D7A" iconSrc="/icons/misc-feedback.svg">
-              Feedback
-            </OptionItem>
-          </div>
-
-          <div className="text-sm m-2 opacity-20 hover:opacity-100 transition font-medium text-[#abc4ff] whitespace-nowrap">
-            <div>current: {currentVersion}</div>
-            <div>lastest: {lastestVersion}</div>
-          </div>
-        </Col>
       </Col>
     </>
   )

@@ -5,18 +5,14 @@ import { useRouter } from 'next/router'
 import NextNProgress from 'nextjs-progressbar'
 
 import {
-  useDeviceInfoSyc,
-  useSentryConfigurator,
-  useSlippageTolerenceSyncer,
-  useSlippageTolerenceValidator,
-  useThemeModeSync,
+  useDeviceInfoSyc, useSentryConfigurator, useSlippageTolerenceSyncer, useSlippageTolerenceValidator, useThemeModeSync,
   useWelcomeDialog
 } from '@/application/appSettings/initializationHooks'
+import { useAppInitVersionPostHeartBeat, useJudgeAppVersion } from '@/application/appVersion/useAppVersion'
 import useConnectionInitialization from '@/application/connection/useConnectionInitialization'
 import { useUserCustomizedEndpointInitLoad } from '@/application/connection/useUserCustomizedEndpointInitLoad'
 import useFarmInfoFetcher from '@/application/farms/feature/useFarmInfoLoader'
 import useInjectRaydiumFeeAprFromPair from '@/application/farms/feature/useInjectRaydiumFeeAprFromPair'
-import useAutoFetchIdoDetail from '@/application/ido/feature/useAutoFetchIdoDetail'
 import useLiquidityInfoLoader from '@/application/liquidity/feature/useLiquidityInfoLoader'
 import useMessageBoardFileLoader from '@/application/messageBoard/useMessageBoardFileLoader'
 import useMessageBoardReadedIdRecorder from '@/application/messageBoard/useMessageBoardReadedIdRecorder'
@@ -26,6 +22,7 @@ import useAutoUpdateSelectableTokens from '@/application/token/feature/useAutoUp
 import { useLpTokenMethodsLoad } from '@/application/token/feature/useLpTokenMethodsLoad'
 import useLpTokensLoader from '@/application/token/feature/useLpTokensLoader'
 import useTokenMintAutoRecord from '@/application/token/feature/useTokenFlaggedMintAutoRecorder'
+import { useTokenGetterFnLoader } from '@/application/token/feature/useTokenGetterFnLoader'
 import useTokenListSettingsLocalStorage from '@/application/token/feature/useTokenListSettingsLocalStorage'
 import useTokenListsLoader from '@/application/token/feature/useTokenListsLoader'
 import useTokenPriceRefresher from '@/application/token/feature/useTokenPriceRefresher'
@@ -35,18 +32,15 @@ import useInitBalanceRefresher from '@/application/wallet/feature/useBalanceRefr
 import { useSyncWithSolanaWallet } from '@/application/wallet/feature/useSyncWithSolanaWallet'
 import useTokenAccountsRefresher from '@/application/wallet/feature/useTokenAccountsRefresher'
 import { useWalletAccountChangeListeners } from '@/application/wallet/feature/useWalletAccountChangeListeners'
+import { useWalletConnectNotifaction } from '@/application/wallet/feature/useWalletConnectNotifaction'
 import RecentTransactionDialog from '@/components/dialogs/RecentTransactionDialog'
 import WalletSelectorDialog from '@/components/dialogs/WalletSelectorDialog'
-import NotificationSystemStack from '@/components/NotificationSystemStack'
+import { DRAWER_STACK_ID } from '@/components/Drawer'
+import { POPOVER_STACK_ID } from '@/components/Popover'
 import { SolanaWalletProviders } from '@/components/SolanaWallets/SolanaWallets'
 import useHandleWindowTopError from '@/hooks/useHandleWindowTopError'
 
 import '../styles/index.css'
-import { useWalletConnectNotifaction } from '@/application/wallet/feature/useWalletConnectNotifaction'
-import { useAppInitVersionPostHeartBeat, useJudgeAppVersion } from '@/application/appVersion/useAppVersion'
-import { useTokenGetterFnLoader } from '@/application/token/feature/useTokenGetterFnLoader'
-import { POPOVER_STACK_ID } from '@/components/Popover'
-import { DRAWER_STACK_ID } from '@/components/Drawer'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const { pathname } = useRouter()
@@ -137,8 +131,5 @@ function ApplicationsInitializations() {
   useInitRefreshTransactionStatus()
   useSyncTxHistoryWithLocalStorage()
 
-  /********************** acceleraytor **********************/
-  // // useAutoFetchIdoInfo()
-  // useAutoFetchIdoDetail()
   return null
 }

@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 export default function HomePage() {
-  const { push } = useRouter()
   useEffect(() => {
-    push('/swap');
-  });
+    const { push } = useRouter()
+    push('/swap')
+  })
 }

@@ -5,7 +5,6 @@ import { ZERO } from '@raydium-io/raydium-sdk'
 
 import { twMerge } from 'tailwind-merge'
 
-import { popWelcomeDialogFn } from '@/application/appSettings/initializationHooks'
 import useAppSettings from '@/application/appSettings/useAppSettings'
 import useConnection from '@/application/connection/useConnection'
 import useNotification from '@/application/notification/useNotification'
@@ -23,7 +22,6 @@ import { LinkAddress } from '@/types/constants'
 import { Badge } from './Badge'
 import Button from './Button'
 import Col from './Col'
-import Drawer from './Drawer'
 import { FadeIn } from './FadeIn'
 import Grid from './Grid'
 import Icon, { AppHeroIconName } from './Icon'
@@ -35,7 +33,6 @@ import WalletWidget from './navWidgets/WalletWidget'
 import PageLayoutPopoverDrawer from './PageLayoutPopoverDrawer'
 import Row from './Row'
 import Tooltip from './Tooltip'
-import LoadingCircle from './LoadingCircle'
 import { setCssVarible } from '@/functions/dom/cssVariable'
 import { inClient } from '@/functions/judgers/isSSR'
 import { useAppVersion } from '@/application/appVersion/useAppVersion'
@@ -104,7 +101,6 @@ export default function PageLayout(props: {
       >
         {/* do not check ata currently
         <MigrateBubble /> */}
-        <VersionMessageBubble />
         {props.children}
       </main>
     </div>

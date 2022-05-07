@@ -1,6 +1,6 @@
 {
-  "name": "raydium-frontend",
-  "version": "2.0.0",
+  "name": "raydium-widgets",
+  "version": "0.1.0",
   "scripts": {
     "dev": "next dev -p 3008",
     "build": "next build",

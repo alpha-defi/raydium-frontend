@@ -69,7 +69,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         {/* Global Components */}
         <RecentTransactionDialog />
         <WalletSelectorDialog />
-        <NotificationSystemStack />
       </div>
     </SolanaWalletProviders>
   )
@@ -139,7 +138,7 @@ function ApplicationsInitializations() {
   useSyncTxHistoryWithLocalStorage()
 
   /********************** acceleraytor **********************/
-  // useAutoFetchIdoInfo()
-  useAutoFetchIdoDetail()
+  // // useAutoFetchIdoInfo()
+  // useAutoFetchIdoDetail()
   return null
 }
